@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ars-byte | Portafolio</title>
+    <title>About-me</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --base: #1e1e2e;
             --text: #cdd6f4;
             --subtext: #a6adc8;
-            /* AJUSTE: Bajamos la opacidad de 0.7 a 0.3 para más transparencia */
-            --surface0: rgba(30, 30, 46, 0.3); 
+            --surface0: rgba(30, 30, 46, 0.6); 
             --lavender: #b4befe;
             --mauve: #cba6f7;
             --sapphire: #74c7ec;
@@ -22,129 +21,52 @@
             --blue: #89b4fa;
         }
 
-        body, html {
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100vh;
             font-family: 'JetBrains Mono', 'Segoe UI', monospace;
             color: var(--text);
-            background-color: transparent; 
-            overflow: hidden;
-        }
-
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            /* Un poco más oscuro el overlay para que el texto resalte sobre la transparencia */
-            background: linear-gradient(rgba(30, 30, 46, 0.6), rgba(30, 30, 46, 0.6)), 
-                        url('https://preview.redd.it/nord-wallpapers-v0-mpyy5m6t1t9a1.png?width=1080&crop=smart&auto=webp&s=d87586eae65a0f6ee1d35ba8ec7e14962b7c020b');
+            background: linear-gradient(rgba(30, 30, 46, 0.8), rgba(30, 30, 46, 0.8)), 
+                        url('https://preview.redd.it/exclusive-nord-wallpapers-v0-bn2cm6gi26s81.png?width=1080&crop=smart&auto=webp&s=414c30655473bdcf1610c7400a5883c350a5e52a'); 
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             background-repeat: no-repeat;
-            z-index: -1;
         }
 
         .main-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
             gap: 25px;
-            padding: 20px;
+            padding: 40px 20px;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
         .glass-panel {
             background: var(--surface0);
-            backdrop-filter: blur(15px); /* Aumentamos un poco el desenfoque para estilo Apple */
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(180, 190, 254, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(180, 190, 254, 0.1);
             border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .top-section {
-            display: flex;
-            gap: 20px;
-            max-width: 850px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
             width: 100%;
+            box-sizing: border-box;
         }
 
-        .profile-card {
-            flex: 2;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .avatar {
-            width: 110px;
-            height: 110px;
-            border-radius: 20px;
-            object-fit: cover;
-            border: 2px solid var(--lavender);
-            box-shadow: 0 0 15px rgba(180, 190, 254, 0.2);
-        }
-
-        .profile-info h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            color: var(--mauve);
-            font-weight: 800;
-        }
-
-        .profile-info p {
-            margin: 8px 0 0;
-            color: var(--subtext);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .profile-info i { color: var(--sapphire); }
-
-        .social-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .social-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text);
-            font-size: 1.6rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05); /* Botones también más sutiles */
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .social-item:hover {
-            transform: translateY(-3px);
-            background: rgba(203, 166, 247, 0.2);
-            border-color: var(--mauve);
-            color: var(--mauve);
-        }
-
-        .bio-card {
-            max-width: 850px;
-            width: 100%;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
+        .top-section { display: flex; gap: 20px; width: 100%; }
+        .profile-card { flex: 2; display: flex; align-items: center; gap: 25px; }
+        .avatar { width: 110px; height: 110px; border-radius: 20px; object-fit: cover; border: 2px solid var(--lavender); }
+        .profile-info h1 { margin: 0; font-size: 2.2rem; color: var(--mauve); }
+        .profile-info p { margin: 5px 0; color: var(--subtext); font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .social-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .social-item { display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text); font-size: 1.5rem; border-radius: 15px; background: rgba(255, 255, 255, 0.05); transition: 0.3s; }
+        .social-item:hover { background: var(--mauve); color: var(--base); transform: translateY(-3px); }
+        .bio-card p { line-height: 1.6; margin: 15px 0; }
         .bio-card b { color: var(--peach); }
-
         .tag-python { color: var(--yellow); font-weight: bold; }
         .tag-c { color: var(--blue); font-weight: bold; }
         .tag-ruby { color: var(--red); font-weight: bold; }
@@ -152,26 +74,15 @@
         .tag-web { color: var(--peach); font-weight: bold; }
         .tag-cloud { color: var(--teal); font-weight: bold; }
         .tag-design { color: var(--mauve); font-weight: bold; }
+        .projects-title { color: var(--lavender); font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .project-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .project-link { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(180, 190, 254, 0.05); border-radius: 12px; text-decoration: none; color: var(--text); transition: 0.2s; }
+        .project-link:hover { background: rgba(180, 190, 254, 0.1); border-color: var(--lavender); }
 
-        .footer-info {
-            position: absolute;
-            bottom: 25px;
-            left: 30px;
-            font-size: 0.85rem;
-            color: var(--subtext);
-            opacity: 0.7;
-        }
-
-        @media (max-width: 700px) {
-            .top-section { flex-direction: column; }
-            .main-container { overflow-y: auto; padding: 50px 20px; justify-content: flex-start; }
-            .avatar { width: 80px; height: 80px; }
-        }
+        @media (max-width: 700px) { .top-section { flex-direction: column; } }
     </style>
 </head>
 <body>
-
-    <div class="background"></div>
 
     <div class="main-container">
         <div class="top-section">
@@ -186,24 +97,33 @@
             </div>
 
             <div class="glass-panel social-grid">
-                <a href="https://discord.gg/Arscharm" target="_blank" class="social-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
-                <a href="https://www.youtube.com/@Arspycharm" target="_blank" class="social-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://steamcommunity.com/profiles/76561199801796230/" target="_blank" class="social-item" title="Steam"><i class="fa-brands fa-steam"></i></a>
-                <a href="https://github.com/Ars-byte" target="_blank" class="social-item" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://discord.gg/Arscharm" target="_blank" class="social-item"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://www.youtube.com/@Arspycharm" target="_blank" class="social-item"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://steamcommunity.com/profiles/76561199801796230/" target="_blank" class="social-item"><i class="fa-brands fa-steam"></i></a>
+                <a href="https://github.com/Ars-byte" target="_blank" class="social-item"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
 
         <div class="glass-panel bio-card">
-            <p>Hola, soy <b>Ars</b>, un desarrollador de software :b.</p>
-            <p>Actualmente domino <span class="tag-python">Python</span>, se un poco de: <span class="tag-c">C</span>, <span class="tag-ruby">Ruby</span>, <span class="tag-js">JavaScript</span> y desarrollo <span class="tag-web">Web (HTML5/CSS3)</span>. También se manejar herramientas como <span class="tag-cloud">Google Cloud</span> y <span class="tag-cloud">Git/GitHub</span>, Nmap y Metasploit.</p>
+            <p>Hola, soy <b>Ars</b>, un programador de software :b.</p>
+            <p>Actualmente domino <span class="tag-python">Python</span>, se un poco de: <span class="tag-c">C</span>, <span class="tag-ruby">Ruby</span>, <span class="tag-js">JavaScript</span> y desarrollo <span class="tag-web">Web (HTML5/CSS3)</span>. También se manejar herramientas como <span class="tag-cloud">Google Cloud</span> y <span class="tag-cloud">Git/GitHub</span>, Metasploit y nmap.</p>
             <p>Tengo conocimientos medios en Linux (Arch, Debian y Void) y Windows (10/11).</p>
             <p>En el lado de diseño grafico, utilizo <span class="tag-design">Krita, Inkscape, Gimp y Canva</span>.</p>
-            <p>Soy una persona abierta a aprender cualquier cosa con tal de expandir sus conocimientos.</p>
         </div>
-    </div>
 
-    <div class="footer-info">
-        <i class="fa-solid fa-moon"></i> Ars-byte 2026
+        <div class="glass-panel">
+            <div class="projects-title">
+                <i class="fa-solid fa-code-branch"></i> Proyectos interesantes:
+            </div>
+            <div class="project-list">
+                <a href="https://ars-byte.github.io/Pokedex/" target="_blank" class="project-link"><i class="fa-solid fa-gamepad"></i> Pokedex</a>
+                <a href="https://github.com/Ars-byte/arax-map" target="_blank" class="project-link"><i class="fa-solid fa-map-location-dot"></i> Arax Map</a>
+                <a href="https://ars-byte.github.io/Calculator/" target="_blank" class="project-link"><i class="fa-solid fa-calculator"></i> Calculator</a>
+                <a href="https://ars-byte.github.io/Paint-html/" target="_blank" class="project-link"><i class="fa-solid fa-palette"></i> Paint HTML</a>
+                <a href="https://github.com/Ars-byte/Audio-recorder" target="_blank" class="project-link"><i class="fa-solid fa-microphone"></i> Audio Recorder</a>
+                <a href="https://github.com/Ars-byte/Facial-recognition" target="_blank" class="project-link"><i class="fa-solid fa-face-smile"></i> Facial Recognition</a>
+            </div>
+        </div>
     </div>
 
 </body>
