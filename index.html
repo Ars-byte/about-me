@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About-me</title>
+    <title>Ars-byte | Portafolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -21,18 +21,26 @@
             --blue: #89b4fa;
         }
 
-        body {
+        body, html {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             font-family: 'JetBrains Mono', 'Segoe UI', monospace;
             color: var(--text);
             background: linear-gradient(rgba(30, 30, 46, 0.8), rgba(30, 30, 46, 0.8)), 
-                        url('https://preview.redd.it/exclusive-nord-wallpapers-v0-bn2cm6gi26s81.png?width=1080&crop=smart&auto=webp&s=414c30655473bdcf1610c7400a5883c350a5e52a'); 
+                        url('https://preview.redd.it/exclusive-nord-wallpapers-v0-bn2cm6gi26s81.png?width=1080&crop=smart&auto=webp&s=414c30655473bdcf1610c7400a5883c350a5e52a');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-repeat: no-repeat;
+        }
+
+        [data-lang="en"] { display: none !important; }
+        [data-lang="es"] { display: block; }
+
+        p[data-lang], span[data-lang] {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .main-container {
@@ -40,7 +48,7 @@
             flex-direction: column;
             align-items: center;
             gap: 25px;
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -57,15 +65,38 @@
             box-sizing: border-box;
         }
 
+        .lang-control {
+            align-self: flex-end;
+            margin-bottom: -15px;
+        }
+
+        .lang-btn {
+            background: var(--surface0);
+            border: 1px solid var(--lavender);
+            color: var(--lavender);
+            padding: 8px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: var(--lavender);
+            color: var(--base);
+        }
+
         .top-section { display: flex; gap: 20px; width: 100%; }
         .profile-card { flex: 2; display: flex; align-items: center; gap: 25px; }
         .avatar { width: 110px; height: 110px; border-radius: 20px; object-fit: cover; border: 2px solid var(--lavender); }
         .profile-info h1 { margin: 0; font-size: 2.2rem; color: var(--mauve); }
-        .profile-info p { margin: 5px 0; color: var(--subtext); font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .profile-info p { margin: 5px 0; color: var(--subtext); font-size: 0.95rem; }
+        
         .social-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .social-item { display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--text); font-size: 1.5rem; border-radius: 15px; background: rgba(255, 255, 255, 0.05); transition: 0.3s; }
         .social-item:hover { background: var(--mauve); color: var(--base); transform: translateY(-3px); }
-        .bio-card p { line-height: 1.6; margin: 15px 0; }
+
+        .bio-card p { line-height: 1.8; margin: 18px 0; font-size: 1.05rem; }
         .bio-card b { color: var(--peach); }
         .tag-python { color: var(--yellow); font-weight: bold; }
         .tag-c { color: var(--blue); font-weight: bold; }
@@ -74,9 +105,10 @@
         .tag-web { color: var(--peach); font-weight: bold; }
         .tag-cloud { color: var(--teal); font-weight: bold; }
         .tag-design { color: var(--mauve); font-weight: bold; }
+
         .projects-title { color: var(--lavender); font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .project-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .project-link { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(180, 190, 254, 0.05); border-radius: 12px; text-decoration: none; color: var(--text); transition: 0.2s; }
+        .project-link { display: flex; align-items: center; gap: 12px; padding: 15px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(180, 190, 254, 0.05); border-radius: 12px; text-decoration: none; color: var(--text); transition: 0.2s; }
         .project-link:hover { background: rgba(180, 190, 254, 0.1); border-color: var(--lavender); }
 
         @media (max-width: 700px) { .top-section { flex-direction: column; } }
@@ -85,14 +117,24 @@
 <body>
 
     <div class="main-container">
+        <div class="lang-control">
+            <button class="lang-btn" onclick="toggleLang()" id="btnText">English</button>
+        </div>
+
         <div class="top-section">
             <div class="glass-panel profile-card">
                 <img src="https://avatars.githubusercontent.com/u/198413795?v=4" alt="Ars-btw" class="avatar">
                 <div class="profile-info">
                     <h1>Ars-btw</h1>
                     <p><i class="fa-solid fa-terminal"></i> Low software dev</p>
-                    <p><i class="fa-solid fa-ghost"></i> Made in Venezuela.</p>
-                    <p><i class="fa-solid fa-calendar"></i> 14 years old.</p>
+                    
+                    <p data-lang="es"><i class="fa-solid fa-ghost"></i> Nacido en Venezuela.</p>
+                    <p data-lang="es"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
+                    <p data-lang="es"><i class="fa-solid fa-calendar"></i> 14 años.</p>
+
+                    <p data-lang="en"><i class="fa-solid fa-ghost"></i> Born in Venezuela.</p>
+                    <p data-lang="en"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
+                    <p data-lang="en"><i class="fa-solid fa-calendar"></i> 14 years old.</p>
                 </div>
             </div>
 
@@ -105,15 +147,28 @@
         </div>
 
         <div class="glass-panel bio-card">
-            <p>Hola, soy <b>Ars</b>, un programador de software :b.</p>
-            <p>Actualmente domino <span class="tag-python">Python</span>, se un poco de: <span class="tag-c">C</span>, <span class="tag-ruby">Ruby</span>, <span class="tag-js">JavaScript</span> y desarrollo <span class="tag-web">Web (HTML5/CSS3)</span>. También se manejar herramientas como <span class="tag-cloud">Google Cloud</span> y <span class="tag-cloud">Git/GitHub</span>, Metasploit y nmap.</p>
-            <p>Tengo conocimientos medios en Linux (Arch, Debian y Void) y Windows (10/11).</p>
-            <p>En el lado de diseño grafico, utilizo <span class="tag-design">Krita, Inkscape, Gimp y Canva</span>.</p>
+            <div data-lang="es">
+                <p>Hola, soy <b>Ars</b>, un programador de software :b.</p>
+                <p>Actualmente domino <span class="tag-python">Python</span>, se un poco de: <span class="tag-c">C</span>, <span class="tag-ruby">Ruby</span>, <span class="tag-js">JavaScript</span> y desarrollo <span class="tag-web">Web (HTML5/CSS3)</span>. También se manejar herramientas como <span class="tag-cloud">Google Cloud</span> y <span class="tag-cloud">Git/GitHub</span>, Metasploit y nmap.</p>
+                <p>Tengo conocimientos medios en Linux (Arch, Debian y Void) y Windows (10/11).</p>
+                <p>En el lado de diseño grafico, utilizo <span class="tag-design">Krita, Inkscape, Gimp y Canva</span>.</p>
+                <p>Soy una persona abierta a aprender cualquier cosa con tal de expandir sus conocimientos.</p>
+            </div>
+
+            <div data-lang="en">
+                <p>Hi, I'm <b>Ars</b>, a software developer :b.</p>
+                <p>Currently mastering <span class="tag-python">Python</span>, I know some <span class="tag-c">C</span>, <span class="tag-ruby">Ruby</span>, <span class="tag-js">JavaScript</span> and <span class="tag-web">Web dev (HTML5/CSS3)</span>. I also handle tools like <span class="tag-cloud">Google Cloud</span> and <span class="tag-cloud">Git/GitHub</span>, Metasploit and nmap.</p>
+                <p>I have intermediate knowledge in Linux (Arch, Debian and Void) and Windows (10/11).</p>
+                <p>On the graphic design side, I use <span class="tag-design">Krita, Inkscape, Gimp and Canva</span>.</p>
+                <p>I am a person open to learning anything to expand my knowledge.</p>
+            </div>
         </div>
 
         <div class="glass-panel">
             <div class="projects-title">
-                <i class="fa-solid fa-code-branch"></i> Proyectos interesantes:
+                <i class="fa-solid fa-code-branch"></i> 
+                <span data-lang="es">Proyectos interesantes:</span>
+                <span data-lang="en">Interesting projects:</span>
             </div>
             <div class="project-list">
                 <a href="https://ars-byte.github.io/Pokedex/" target="_blank" class="project-link"><i class="fa-solid fa-gamepad"></i> Pokedex</a>
@@ -126,5 +181,25 @@
         </div>
     </div>
 
+    <script>
+        let currentLang = 'es';
+        function toggleLang() {
+            const esElements = document.querySelectorAll('[data-lang="es"]');
+            const enElements = document.querySelectorAll('[data-lang="en"]');
+            const btn = document.getElementById('btnText');
+
+            if (currentLang === 'es') {
+                esElements.forEach(el => el.style.setProperty('display', 'none', 'important'));
+                enElements.forEach(el => el.style.setProperty('display', 'block', 'important'));
+                btn.innerText = 'Español';
+                currentLang = 'en';
+            } else {
+                esElements.forEach(el => el.style.setProperty('display', 'block', 'important'));
+                enElements.forEach(el => el.style.setProperty('display', 'none', 'important'));
+                btn.innerText = 'English';
+                currentLang = 'es';
+            }
+        }
+    </script>
 </body>
 </html>
