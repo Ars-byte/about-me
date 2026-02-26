@@ -1,454 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ars-byte | Portafolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --nord0: #2E3440;
-            --nord1: #3B4252;
-            --nord2: #434C5E;
-            --nord3: #4C566A;
-            --nord4: #D8DEE9;
-            --nord5: #E5E9F0;
-            --nord6: #ECEFF4;
-            --nord7: #8FBCBB;
-            --nord8: #88C0D0;
-            --nord9: #81A1C1;
-            --nord10: #5E81AC;
-            --nord11: #BF616A;
-            --nord12: #D08770;
-            --nord13: #EBCB8B;
-            --nord14: #A3BE8C;
-            --nord15: #B48EAD;
-
-            --bg: #F0F4F8;
-            --surface: rgba(255, 255, 255, 0.72);
-            --surface-hover: rgba(255, 255, 255, 0.92);
-            --border: rgba(46, 52, 64, 0.1);
-            --text-primary: var(--nord0);
-            --text-secondary: var(--nord3);
-            --accent: var(--nord10);
-            --accent2: var(--nord8);
-        }
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body, html {
-            min-height: 100vh;
-            font-family: 'Sora', sans-serif;
-            color: var(--text-primary);
-            background:
-                linear-gradient(rgba(236, 239, 244, 0.82), rgba(216, 222, 233, 0.90)),
-                url('https://e1.pxfuel.com/desktop-wallpaper/326/562/desktop-wallpaper-nordic-kde-winter-nordic.jpg');
-            background-size: cover;
-            background-position: center top;
-            background-attachment: fixed;
-        }
-
-        /* ─── Language toggle ─── */
-        [data-lang="en"] { display: none !important; }
-        [data-lang="es"] { display: block; }
-
-        p[data-lang], span[data-lang] {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* ─── Layout ─── */
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 60px 20px 80px;
-            max-width: 860px;
-            margin: 0 auto;
-        }
-
-        /* ─── Glass panel ─── */
-        .glass-panel {
-            background: var(--surface);
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 28px 32px;
-            box-shadow:
-                0 2px 4px rgba(46,52,64,0.04),
-                0 8px 24px rgba(46,52,64,0.08),
-                inset 0 1px 0 rgba(255,255,255,0.8);
-            width: 100%;
-            transition: box-shadow 0.3s;
-        }
-
-        .glass-panel:hover {
-            box-shadow:
-                0 2px 4px rgba(46,52,64,0.06),
-                0 12px 32px rgba(46,52,64,0.13),
-                inset 0 1px 0 rgba(255,255,255,0.8);
-        }
-
-        /* ─── Lang button ─── */
-        .lang-control { align-self: flex-end; margin-bottom: -8px; }
-
-        .lang-btn {
-            background: var(--surface);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 8px 18px;
-            border-radius: 100px;
-            cursor: pointer;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 0.04em;
-            transition: all 0.25s;
-            box-shadow: 0 2px 8px rgba(46,52,64,0.06);
-        }
-
-        .lang-btn:hover {
-            background: var(--nord0);
-            color: var(--nord6);
-            border-color: var(--nord0);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(46,52,64,0.18);
-        }
-
-        /* ─── Top section ─── */
-        .top-section { display: flex; gap: 16px; width: 100%; align-items: stretch; }
-
-        .profile-card {
-            flex: 2;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .avatar-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 18px;
-            object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.9);
-            box-shadow: 0 4px 20px rgba(46,52,64,0.18);
-            display: block;
-        }
-
-        .avatar-badge {
-            position: absolute;
-            bottom: -6px;
-            right: -6px;
-            width: 22px;
-            height: 22px;
-            background: var(--nord14);
-            border-radius: 50%;
-            border: 2.5px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-
-        .profile-info h1 {
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--nord0);
-            letter-spacing: -0.03em;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .role-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--nord0);
-            color: var(--nord6);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.72rem;
-            font-family: 'DM Mono', monospace;
-            letter-spacing: 0.04em;
-            margin-bottom: 12px;
-        }
-
-        .profile-info p {
-            margin: 5px 0;
-            color: var(--text-secondary);
-            font-size: 0.82rem;
-            font-family: 'DM Mono', monospace;
-        }
-
-        .profile-info p i {
-            color: var(--nord9);
-            width: 14px;
-        }
-
-        /* ─── Social grid ─── */
-        .social-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .social-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.3rem;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.5);
-            border: 1px solid var(--border);
-            color: var(--nord3);
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 52px;
-        }
-
-        .social-item:hover {
-            background: var(--nord0);
-            color: var(--nord6);
-            border-color: var(--nord0);
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 6px 18px rgba(46,52,64,0.22);
-        }
-
-        /* ─── Bio card ─── */
-        .bio-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bio-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--nord8), var(--nord10), var(--nord15));
-            border-radius: 20px 20px 0 0;
-        }
-
-        .bio-card p {
-            line-height: 1.85;
-            margin: 12px 0;
-            font-size: 0.95rem;
-            color: var(--nord1);
-        }
-
-        .bio-card b { color: var(--nord10); font-weight: 700; }
-
-        /* Inline tags */
-        .tag {
-            display: inline-block;
-            padding: 2px 9px;
-            border-radius: 6px;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.82rem;
-            font-weight: 500;
-            margin: 0 1px;
-        }
-
-        .tag-python { background: rgba(235,203,139,0.18); color: #8a6f00; border: 1px solid rgba(235,203,139,0.5); }
-        .tag-c      { background: rgba(136,192,208,0.18); color: #2e7d8e; border: 1px solid rgba(136,192,208,0.5); }
-        .tag-ruby   { background: rgba(191,97,106,0.14); color: var(--nord11); border: 1px solid rgba(191,97,106,0.35); }
-        .tag-js     { background: rgba(235,203,139,0.18); color: #8a6f00; border: 1px solid rgba(235,203,139,0.5); }
-        .tag-web    { background: rgba(208,135,112,0.14); color: #a0502e; border: 1px solid rgba(208,135,112,0.4); }
-        .tag-cloud  { background: rgba(143,188,187,0.18); color: #2e6f6e; border: 1px solid rgba(143,188,187,0.5); }
-        .tag-design { background: rgba(180,142,173,0.18); color: #7a4f77; border: 1px solid rgba(180,142,173,0.4); }
-
-        /* ─── Projects ─── */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .section-header i {
-            color: var(--nord10);
-            font-size: 1rem;
-        }
-
-        .section-title {
-            font-size: 0.7rem;
-            font-family: 'DM Mono', monospace;
-            font-weight: 500;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .project-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-        }
-
-        .project-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            background: rgba(255,255,255,0.45);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--nord2);
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: all 0.22s;
-        }
-
-        .project-link i {
-            font-size: 1rem;
-            color: var(--nord9);
-            flex-shrink: 0;
-            transition: color 0.22s;
-        }
-
-        .project-link:hover {
-            background: var(--nord0);
-            color: var(--nord6);
-            border-color: var(--nord0);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(46,52,64,0.2);
-        }
-
-        .project-link:hover i {
-            color: var(--nord8);
-        }
-
-        /* ─── Animations ─── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .main-container > * {
-            animation: fadeUp 0.5s ease both;
-        }
-
-        .main-container > *:nth-child(1) { animation-delay: 0.05s; }
-        .main-container > *:nth-child(2) { animation-delay: 0.12s; }
-        .main-container > *:nth-child(3) { animation-delay: 0.20s; }
-        .main-container > *:nth-child(4) { animation-delay: 0.28s; }
-
-        /* ─── Responsive ─── */
-        @media (max-width: 680px) {
-            .top-section { flex-direction: column; }
-            .social-grid { grid-template-columns: repeat(4, 1fr); }
-            .profile-info h1 { font-size: 1.55rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ars-byte | Portafolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --n0:#2E3440;--n1:#3B4252;--n2:#434C5E;--n3:#4C566A;
+  --n4:#D8DEE9;--n5:#E5E9F0;--n6:#ECEFF4;
+  --n8:#88C0D0;--n9:#81A1C1;--n10:#5E81AC;
+  --n11:#BF616A;--n12:#D08770;--n13:#EBCB8B;--n14:#A3BE8C;--n15:#B48EAD;
+  --surface:rgba(255,255,255,.50);--surface2:rgba(255,255,255,.35);
+  --border:rgba(46,52,64,.10);--txt:var(--n0);--txt2:var(--n3);
+  --bio:var(--n1);--badge-b:white;--divider:rgba(46,52,64,.12);
+}
+body.dark {
+  --surface:rgba(46,52,64,.60);--surface2:rgba(59,66,82,.52);
+  --border:rgba(216,222,233,.10);--txt:var(--n5);--txt2:var(--n4);
+  --bio:var(--n4);--badge-b:#3B4252;--divider:rgba(216,222,233,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;font-family:'Sora',sans-serif;color:var(--txt);transition:color .3s}
+body{
+  background-image:linear-gradient(rgba(236,239,244,.65),rgba(216,222,233,.70)),url('https://e1.pxfuel.com/desktop-wallpaper/326/562/desktop-wallpaper-nordic-kde-winter-nordic.jpg');
+  background-size:cover;background-position:center top;background-attachment:fixed;transition:background-image .4s;
+}
+body.dark{
+  background-image:linear-gradient(rgba(18,22,30,.72),rgba(18,22,30,.76)),url('https://i.pinimg.com/736x/cc/39/56/cc3956d2ee2d864a263acc2ab2d9618f.jpg');
+}
+[data-lang="en"]{display:none!important}
+[data-lang="es"]{display:block}
+p[data-lang],span[data-lang]{display:flex;align-items:center;gap:8px}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:18px;padding:56px 18px 80px;max-width:860px;margin:0 auto}
+.panel{background:var(--surface);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);border:1px solid var(--border);border-radius:20px;padding:26px 30px;box-shadow:0 2px 4px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.08),inset 0 1px 0 rgba(255,255,255,.45);width:100%;transition:background .35s,border-color .35s,box-shadow .28s}
+.panel:hover{box-shadow:0 2px 4px rgba(0,0,0,.06),0 12px 30px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.45)}
+.controls{align-self:flex-end;display:flex;gap:8px;margin-bottom:-6px}
+.btn{background:var(--surface);backdrop-filter:blur(12px);border:1px solid var(--border);color:var(--txt2);padding:8px 15px;border-radius:100px;cursor:pointer;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.04em;display:flex;align-items:center;gap:6px;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.btn:hover{background:var(--n0);color:var(--n6);border-color:var(--n0);transform:translateY(-1px);box-shadow:0 4px 12px rgba(46,52,64,.18)}
+body.dark .btn:hover{background:var(--n5);color:var(--n0);border-color:var(--n5)}
+.top{display:flex;gap:16px;width:100%;align-items:stretch}
+.profile{flex:2;display:flex;align-items:center;gap:22px}
+.av-wrap{position:relative;flex-shrink:0}
+.av{width:98px;height:98px;border-radius:18px;object-fit:cover;border:2px solid rgba(255,255,255,.85);box-shadow:0 4px 20px rgba(46,52,64,.18);display:block}
+.av-dot{position:absolute;bottom:-5px;right:-5px;width:19px;height:19px;background:var(--n14);border-radius:50%;border:2.5px solid var(--badge-b);transition:border-color .35s}
+.profile h1{font-size:1.8rem;font-weight:700;color:var(--txt);letter-spacing:-.03em;line-height:1;margin-bottom:6px;transition:color .35s}
+.role{display:inline-flex;align-items:center;gap:6px;background:var(--n0);color:var(--n6);padding:4px 12px;border-radius:100px;font-size:.72rem;font-family:'DM Mono',monospace;letter-spacing:.04em;margin-bottom:11px;transition:background .35s,color .35s}
+body.dark .role{background:var(--n5);color:var(--n0)}
+.profile p{margin:4px 0;color:var(--txt2);font-size:.81rem;font-family:'DM Mono',monospace;transition:color .35s}
+.profile p i{color:var(--n9);width:14px}
+.socials{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.soc{display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.28rem;border-radius:14px;background:var(--surface2);border:1px solid var(--border);color:var(--txt2);min-height:50px;transition:all .25s cubic-bezier(.34,1.56,.64,1)}
+.soc:hover{background:var(--n0);color:var(--n6);border-color:var(--n0);transform:translateY(-3px) scale(1.04);box-shadow:0 6px 18px rgba(46,52,64,.22)}
+body.dark .soc:hover{background:var(--n8);color:var(--n0);border-color:var(--n8)}
+.bio{position:relative;overflow:hidden}
+.bio::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--n8),var(--n10),var(--n15));border-radius:20px 20px 0 0}
+.bio p{line-height:1.85;margin:11px 0;font-size:.94rem;color:var(--bio);transition:color .35s}
+.bio b{color:var(--n10);font-weight:700}
+body.dark .bio b{color:var(--n8)}
+.tag{display:inline-block;padding:3px 11px;border-radius:100px;font-family:'DM Mono',monospace;font-size:.79rem;font-weight:500;margin:0 1px}
+.tag-python{background:rgba(235,203,139,.22);color:#7a6100}
+.tag-c{background:rgba(136,192,208,.22);color:#1e6b7a}
+.tag-ruby{background:rgba(191,97,106,.18);color:#a63a42}
+.tag-js{background:rgba(235,203,139,.22);color:#7a6100}
+.tag-web{background:rgba(208,135,112,.18);color:#8c4020}
+.tag-cloud{background:rgba(143,188,187,.22);color:#1d6160}
+.tag-design{background:rgba(180,142,173,.22);color:#6b3a68}
+body.dark .tag-python{background:rgba(235,203,139,.16);color:#e8c97a}
+body.dark .tag-c{background:rgba(136,192,208,.16);color:#88C0D0}
+body.dark .tag-ruby{background:rgba(191,97,106,.16);color:#e07b84}
+body.dark .tag-js{background:rgba(235,203,139,.16);color:#e8c97a}
+body.dark .tag-web{background:rgba(208,135,112,.16);color:#d08770}
+body.dark .tag-cloud{background:rgba(143,188,187,.16);color:#8FBCBB}
+body.dark .tag-design{background:rgba(180,142,173,.16);color:#B48EAD}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.sec-head i{color:var(--n10);font-size:.95rem}
+body.dark .sec-head i{color:var(--n8)}
+.sec-label{font-size:.68rem;font-family:'DM Mono',monospace;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);transition:color .35s}
+.sec-line{flex:1;height:1px;background:var(--divider);transition:background .35s}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.proj{display:flex;align-items:center;gap:11px;padding:13px 15px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--txt);font-size:.86rem;font-weight:600;transition:all .22s}
+.proj i{font-size:.95rem;color:var(--n9);flex-shrink:0;transition:color .22s}
+.proj:hover{background:var(--n0);color:var(--n6);border-color:var(--n0);transform:translateY(-2px);box-shadow:0 6px 18px rgba(46,52,64,.2)}
+body.dark .proj:hover{background:var(--n8);color:var(--n0);border-color:var(--n8)}
+.proj:hover i,.body.dark .proj:hover i{color:var(--n8)}
+body.dark .proj:hover i{color:var(--n0)}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.wrap>*{animation:up .48s ease both}
+.wrap>*:nth-child(1){animation-delay:.05s}
+.wrap>*:nth-child(2){animation-delay:.12s}
+.wrap>*:nth-child(3){animation-delay:.19s}
+.wrap>*:nth-child(4){animation-delay:.26s}
+@media(max-width:680px){.top{flex-direction:column}.socials{grid-template-columns:repeat(4,1fr)}.profile h1{font-size:1.5rem}}
+</style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="main-container">
+  <div class="controls">
+    <button class="btn" id="themeBtn" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Night</button>
+    <button class="btn" id="langBtn" onclick="toggleLang()">English</button>
+  </div>
 
-    <div class="lang-control">
-        <button class="lang-btn" onclick="toggleLang()" id="btnText">English</button>
+  <div class="top">
+    <div class="panel profile">
+      <div class="av-wrap">
+        <img src="https://avatars.githubusercontent.com/u/198413795?v=4" alt="Ars" class="av">
+        <div class="av-dot"></div>
+      </div>
+      <div>
+        <h1>Ars-btw</h1>
+        <div class="role"><i class="fa-solid fa-terminal" style="font-size:.7rem"></i> Low software dev</div>
+        <p data-lang="es"><i class="fa-solid fa-ghost"></i> Nacido en Venezuela.</p>
+        <p data-lang="es"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
+        <p data-lang="es"><i class="fa-solid fa-calendar"></i> 14 años.</p>
+        <p data-lang="en"><i class="fa-solid fa-ghost"></i> Born in Venezuela.</p>
+        <p data-lang="en"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
+        <p data-lang="en"><i class="fa-solid fa-calendar"></i> 14 years old.</p>
+      </div>
     </div>
-
-    <div class="top-section">
-        <div class="glass-panel profile-card">
-            <div class="avatar-wrap">
-                <img src="https://avatars.githubusercontent.com/u/198413795?v=4" alt="Ars-btw" class="avatar">
-                <div class="avatar-badge"></div>
-            </div>
-            <div class="profile-info">
-                <h1>Ars-btw</h1>
-                <div class="role-tag"><i class="fa-solid fa-terminal" style="font-size:0.7rem"></i> Low software dev</div>
-
-                <p data-lang="es"><i class="fa-solid fa-ghost"></i> Nacido en Venezuela.</p>
-                <p data-lang="es"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
-                <p data-lang="es"><i class="fa-solid fa-calendar"></i> 14 años.</p>
-
-                <p data-lang="en"><i class="fa-solid fa-ghost"></i> Born in Venezuela.</p>
-                <p data-lang="en"><i class="fa-solid fa-map-location-dot"></i> Buenos Aires, Argentina.</p>
-                <p data-lang="en"><i class="fa-solid fa-calendar"></i> 14 years old.</p>
-            </div>
-        </div>
-
-        <div class="glass-panel social-grid">
-            <a href="https://discord.gg/Arscharm" target="_blank" class="social-item" title="Discord"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://www.youtube.com/@Arspycharm" target="_blank" class="social-item" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://steamcommunity.com/profiles/76561199801796230/" target="_blank" class="social-item" title="Steam"><i class="fa-brands fa-steam"></i></a>
-            <a href="https://github.com/Ars-byte" target="_blank" class="social-item" title="GitHub"><i class="fa-brands fa-github"></i></a>
-        </div>
+    <div class="panel socials">
+      <a href="https://discord.gg/Arscharm" target="_blank" class="soc" title="Discord"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://www.youtube.com/@Arspycharm" target="_blank" class="soc" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://steamcommunity.com/profiles/76561199801796230/" target="_blank" class="soc" title="Steam"><i class="fa-brands fa-steam"></i></a>
+      <a href="https://github.com/Ars-byte" target="_blank" class="soc" title="GitHub"><i class="fa-brands fa-github"></i></a>
     </div>
+  </div>
 
-    <div class="glass-panel bio-card">
-        <div data-lang="es">
-            <p>Hola, soy <b>Ars</b>, un programador de software.</p>
-            <p>Actualmente domino <span class="tag tag-python">Python</span>, sé un poco de <span class="tag tag-c">C</span>, <span class="tag tag-ruby">Ruby</span>, <span class="tag tag-js">JavaScript</span> y desarrollo <span class="tag tag-web">Web (HTML5/CSS3)</span>. También manejo herramientas como <span class="tag tag-cloud">Google Cloud</span>, <span class="tag tag-cloud">Git/GitHub</span>, Metasploit y nmap.</p>
-            <p>Tengo conocimientos medios en Linux (Arch, Debian y Void) y Windows (10/11).</p>
-            <p>En el lado del diseño gráfico, utilizo <span class="tag tag-design">Krita, Inkscape, Gimp y Canva</span>.</p>
-            <p>Soy una persona abierta a aprender cualquier cosa con tal de expandir sus conocimientos.</p>
-        </div>
-        <div data-lang="en">
-            <p>Hi, I'm <b>Ars</b>, a software developer.</p>
-            <p>Currently mastering <span class="tag tag-python">Python</span>, I know some <span class="tag tag-c">C</span>, <span class="tag tag-ruby">Ruby</span>, <span class="tag tag-js">JavaScript</span> and <span class="tag tag-web">Web dev (HTML5/CSS3)</span>. I also handle tools like <span class="tag tag-cloud">Google Cloud</span>, <span class="tag tag-cloud">Git/GitHub</span>, Metasploit and nmap.</p>
-            <p>I have intermediate knowledge in Linux (Arch, Debian and Void) and Windows (10/11).</p>
-            <p>On the graphic design side, I use <span class="tag tag-design">Krita, Inkscape, Gimp and Canva</span>.</p>
-            <p>I am a person open to learning anything to expand my knowledge.</p>
-        </div>
+  <div class="panel bio">
+    <div data-lang="es">
+      <p>Hola, soy <b>Ars</b>, un programador de software.</p>
+      <p>Actualmente domino <span class="tag tag-python">Python</span>, sé un poco de <span class="tag tag-c">C</span>, <span class="tag tag-ruby">Ruby</span>, <span class="tag tag-js">JavaScript</span> y desarrollo <span class="tag tag-web">Web (HTML5/CSS3)</span>. También manejo herramientas como <span class="tag tag-cloud">Google Cloud</span>, <span class="tag tag-cloud">Git/GitHub</span>, Metasploit y nmap.</p>
+      <p>Tengo conocimientos medios en Linux (Arch, Debian y Void) y Windows (10/11).</p>
+      <p>En el lado del diseño gráfico, utilizo <span class="tag tag-design">Krita, Inkscape, Gimp y Canva</span>.</p>
+      <p>Soy una persona abierta a aprender cualquier cosa con tal de expandir sus conocimientos.</p>
     </div>
+    <div data-lang="en">
+      <p>Hi, I'm <b>Ars</b>, a software developer.</p>
+      <p>Currently mastering <span class="tag tag-python">Python</span>, I know some <span class="tag tag-c">C</span>, <span class="tag tag-ruby">Ruby</span>, <span class="tag tag-js">JavaScript</span> and <span class="tag tag-web">Web dev (HTML5/CSS3)</span>. I also handle tools like <span class="tag tag-cloud">Google Cloud</span>, <span class="tag tag-cloud">Git/GitHub</span>, Metasploit and nmap.</p>
+      <p>I have intermediate knowledge in Linux (Arch, Debian and Void) and Windows (10/11).</p>
+      <p>On the graphic design side, I use <span class="tag tag-design">Krita, Inkscape, Gimp and Canva</span>.</p>
+      <p>I am a person open to learning anything to expand my knowledge.</p>
+    </div>
+  </div>
 
-    <div class="glass-panel">
-        <div class="section-header">
-            <i class="fa-solid fa-code-branch"></i>
-            <span class="section-title" data-lang="es">Proyectos interesantes</span>
-            <span class="section-title" data-lang="en">Interesting projects</span>
-            <div class="section-line"></div>
-        </div>
-        <div class="project-list">
-            <a href="https://ars-byte.github.io/Pokedex/" target="_blank" class="project-link"><i class="fa-solid fa-gamepad"></i> Pokedex</a>
-            <a href="https://github.com/Ars-byte/arax-map" target="_blank" class="project-link"><i class="fa-solid fa-map-location-dot"></i> Arax Map</a>
-            <a href="https://ars-byte.github.io/Calculator/" target="_blank" class="project-link"><i class="fa-solid fa-calculator"></i> Calculator</a>
-            <a href="https://ars-byte.github.io/Paint-html/" target="_blank" class="project-link"><i class="fa-solid fa-palette"></i> Paint HTML</a>
-            <a href="https://github.com/Ars-byte/Audio-recorder" target="_blank" class="project-link"><i class="fa-solid fa-microphone"></i> Audio Recorder</a>
-            <a href="https://github.com/Ars-byte/Facial-recognition" target="_blank" class="project-link"><i class="fa-solid fa-face-smile"></i> Facial Recognition</a>
-        </div>
+  <div class="panel">
+    <div class="sec-head">
+      <i class="fa-solid fa-code-branch"></i>
+      <span class="sec-label" data-lang="es">Proyectos interesantes</span>
+      <span class="sec-label" data-lang="en">Interesting projects</span>
+      <div class="sec-line"></div>
     </div>
+    <div class="proj-grid">
+      <a href="https://ars-byte.github.io/Pokedex/" target="_blank" class="proj"><i class="fa-solid fa-gamepad"></i> Pokedex</a>
+      <a href="https://github.com/Ars-byte/arax-map" target="_blank" class="proj"><i class="fa-solid fa-map-location-dot"></i> Arax Map</a>
+      <a href="https://ars-byte.github.io/Calculator/" target="_blank" class="proj"><i class="fa-solid fa-calculator"></i> Calculator</a>
+      <a href="https://ars-byte.github.io/Paint-html/" target="_blank" class="proj"><i class="fa-solid fa-palette"></i> Paint HTML</a>
+      <a href="https://github.com/Ars-byte/Audio-recorder" target="_blank" class="proj"><i class="fa-solid fa-microphone"></i> Audio Recorder</a>
+      <a href="https://github.com/Ars-byte/Facial-recognition" target="_blank" class="proj"><i class="fa-solid fa-face-smile"></i> Facial Recognition</a>
+      <a href="https://github.com/Ars-byte/Pytrix" target="_blank" class="proj"><i class="fa-solid fa-table-cells"></i> Pytrix</a>
+      <a href="https://github.com/Ars-byte/Pymus" target="_blank" class="proj"><i class="fa-solid fa-music"></i> Pymus</a>
+      <a href="https://github.com/Ars-byte/Arsfetch-in-cpp" target="_blank" class="proj"><i class="fa-solid fa-terminal"></i> Arsfetch C++</a>
+      <a href="https://github.com/Ars-byte/mkdlplayer" target="_blank" class="proj"><i class="fa-solid fa-play"></i> mkdlplayer</a>
+      <a href="https://github.com/Ars-byte/Loquendo-with-python" target="_blank" class="proj"><i class="fa-solid fa-volume-high"></i> Loquendo Python</a>
+      <a href="https://ars-byte.github.io/Tic-tac-toe/" target="_blank" class="proj"><i class="fa-solid fa-xmark"></i> Tic-tac-toe</a>
+    </div>
+  </div>
 
 </div>
-
 <script>
-    let currentLang = 'es';
-    function toggleLang() {
-        const esElements = document.querySelectorAll('[data-lang="es"]');
-        const enElements = document.querySelectorAll('[data-lang="en"]');
-        const btn = document.getElementById('btnText');
+  let lang = 'es', dark = false;
 
-        if (currentLang === 'es') {
-            esElements.forEach(el => el.style.setProperty('display', 'none', 'important'));
-            enElements.forEach(el => el.style.setProperty('display', 'block', 'important'));
-            btn.innerText = 'Español';
-            currentLang = 'en';
-        } else {
-            esElements.forEach(el => el.style.setProperty('display', 'block', 'important'));
-            enElements.forEach(el => el.style.setProperty('display', 'none', 'important'));
-            btn.innerText = 'English';
-            currentLang = 'es';
-        }
-    }
+  function toggleLang() {
+    lang = lang === 'es' ? 'en' : 'es';
+    const show = lang, hide = lang === 'es' ? 'en' : 'es';
+    document.querySelectorAll('[data-lang="' + hide + '"]').forEach(el => el.style.setProperty('display','none','important'));
+    document.querySelectorAll('[data-lang="' + show + '"]').forEach(el => el.style.setProperty('display','block','important'));
+    document.getElementById('langBtn').textContent = lang === 'es' ? 'English' : 'Español';
+  }
+
+  function toggleTheme() {
+    dark = !dark;
+    document.body.classList.toggle('dark', dark);
+    const btn = document.getElementById('themeBtn');
+    btn.innerHTML = dark
+      ? '<i class="fa-solid fa-sun"></i> Light'
+      : '<i class="fa-solid fa-moon"></i> Night';
+  }
 </script>
 </body>
 </html>
-
