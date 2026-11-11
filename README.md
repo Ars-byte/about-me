@@ -63,3 +63,11 @@ No requiere herramientas de build ni empaquetadores (Webpack, Vite o Node.js). P
 ```bash
 python3 -m http.server 8080
 ```
+
+## Compatibilidad
+
+Probado y optimizado en:
+- Chromium / Google Chrome
+- Firefox
+- Helium Browser (Linux)
+- Navegadores móviles en Android e iOS
