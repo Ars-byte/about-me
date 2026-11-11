@@ -69,3 +69,7 @@ python3 -m http.server 8080
 - Sin dependencias pesadas ni frameworks inflados.
 - Cero layout shifts acumulados (CLS bajo).
 - Canvas de bajo consumo bloqueado a 24 FPS para ahorrar batería en móviles y portátiles.
+
+## Licencia
+
+MIT © [Ars-byte](https://github.com/Ars-byte)
