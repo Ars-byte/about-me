@@ -47,3 +47,4 @@ about-me/
 - **`src/js/matrix.js`**: Efecto de lluvia digital en Canvas HTML5 usando caracteres `6` y `7` con opacidad tenue, trail suave y redimensionamiento dinámico.
 - **`src/js/counter.js`**: Módulo de incremento numérico animado con función de desaceleración exponencial (`ease-out`) e IntersectionObserver.
 - **`src/js/components.js`**: Generador funcional de plantillas HTML para renderizar la vista de perfil/hero, proyectos destacados y botones de redes.
+- **`src/js/app.js`**: Orquestador principal. Maneja el estado global, el enrutamiento SPA mediante hashes (`#about`, `#projects`, `#social`), la persistencia en `localStorage` y la interacción con el portapapeles.
