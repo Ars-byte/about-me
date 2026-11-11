@@ -1,8 +1,9 @@
 window.Counter = (() => {
   const ease = t => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
-  const animate = (el, duration = 1800) => {
-    const match = el.dataset.value.match(/^(\D*)(\d+)(.*)$/);
+  const animate = (el, duration = 1200) => {
+    const raw = el.dataset.value || "";
+    const match = raw.match(/^(\D*)(\d+)(.*)$/);
     if (!match) return;
     const [, prefix, num, suffix] = match;
     const target = parseInt(num, 10);
@@ -10,8 +11,11 @@ window.Counter = (() => {
 
     const tick = now => {
       const p = Math.min((now - start) / duration, 1);
-      el.textContent = prefix + Math.round(target * ease(p)) + suffix;
-      if (p < 1) el._raf = requestAnimationFrame(tick);
+      const cur = Math.min(Math.round(target * ease(p)), target);
+      el.textContent = prefix + cur + suffix;
+      if (p < 1) {
+        el._raf = requestAnimationFrame(tick);
+      }
     };
 
     cancelAnimationFrame(el._raf);
@@ -22,9 +26,12 @@ window.Counter = (() => {
     entries.forEach(e => {
       if (e.isIntersecting) animate(e.target);
     });
-  }, { threshold: .6 });
+  }, { threshold: 0.2 });
 
-  const watch = root => root.querySelectorAll("[data-value]").forEach(el => observer.observe(el));
+  const watch = root => {
+    if (!root) return;
+    root.querySelectorAll("[data-value]").forEach(el => observer.observe(el));
+  };
 
   return { watch };
 })();
