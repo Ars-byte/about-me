@@ -39,3 +39,4 @@ about-me/
 ### Descripción de módulos
 
 - **`index.html`**: Punto de entrada semántico. Carga tipografías (Outfit, JetBrains Mono), iconos de FontAwesome y los estilos modulares sin código inline.
+- **`src/data/content.js`**: Única fuente de verdad de la información. Define el objeto global `window.SITE` con perfil, métricas numéricas, biografía, tecnologías, proyectos y diccionarios de traducción en español e inglés.
