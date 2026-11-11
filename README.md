@@ -48,3 +48,10 @@ about-me/
 - **`src/js/counter.js`**: Módulo de incremento numérico animado con función de desaceleración exponencial (`ease-out`) e IntersectionObserver.
 - **`src/js/components.js`**: Generador funcional de plantillas HTML para renderizar la vista de perfil/hero, proyectos destacados y botones de redes.
 - **`src/js/app.js`**: Orquestador principal. Maneja el estado global, el enrutamiento SPA mediante hashes (`#about`, `#projects`, `#social`), la persistencia en `localStorage` y la interacción con el portapapeles.
+
+## Proyectos destacados
+
+1. **cmuspp**: Reproductor de música para terminal en C++, enfocado en rendimiento y control por teclado.
+2. **GenovaLauncher**: Lanzador de Minecraft: Bedrock Edition para Linux construido en Python y PySide6 (Qt6).
+3. **Imgview**: Visor de imágenes para TTY en C++ sin servidor gráfico.
+4. **Bigcrock**: Analizador de espacio en disco en árbol escrito en Go.
