@@ -46,3 +46,4 @@ about-me/
 - **`src/css/components/sections.css`**: Cuadrícula de 2x2 para proyectos con bordes acentuados, chips de tecnologías, contenedor de redes sociales y reglas responsivas para móviles.
 - **`src/js/matrix.js`**: Efecto de lluvia digital en Canvas HTML5 usando caracteres `6` y `7` con opacidad tenue, trail suave y redimensionamiento dinámico.
 - **`src/js/counter.js`**: Módulo de incremento numérico animado con función de desaceleración exponencial (`ease-out`) e IntersectionObserver.
+- **`src/js/components.js`**: Generador funcional de plantillas HTML para renderizar la vista de perfil/hero, proyectos destacados y botones de redes.
