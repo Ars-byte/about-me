@@ -4,13 +4,13 @@
   const $ = id => document.getElementById(id);
   let lang = localStorage.getItem("lang") || "es";
 
-  const views = ["home", "about", "projects", "social"];
+  const views = ["about", "projects", "social"];
 
   const show = (targetId) => {
     let id = targetId;
     if (!id) {
       const hash = location.hash.replace(/^#/, "");
-      id = views.includes(hash) ? hash : "home";
+      id = views.includes(hash) ? hash : "about";
     }
 
     views.forEach(v => {
@@ -35,14 +35,13 @@
   const render = () => {
     const t = data.i18n;
     document.documentElement.lang = lang;
-    $("home").innerHTML = C.hero(data.profile, data.stats, lang, t);
-    $("about-body").innerHTML = C.about(data.about[lang], data.stack, lang, data.profile);
+    $("about-body").innerHTML = C.about(data.profile, data.stats, data.about[lang], data.stack, lang, t);
     $("featured").innerHTML = C.featured(data.featured, lang, t);
     $("socials").innerHTML = C.socials(data.socials);
     document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t[el.dataset.t][lang]; });
     $("lang-toggle").textContent = lang === "es" ? "EN" : "ES";
     $("year").textContent = new Date().getFullYear();
-    Counter.watch($("home"));
+    Counter.watch($("about-body"));
     show();
   };
 

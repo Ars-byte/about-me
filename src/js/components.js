@@ -1,37 +1,36 @@
 window.Components = {
-  hero(p, stats, lang, t) {
+  about(p, stats, paragraphs, groups, lang, t) {
     return `
-      <div>
-        <p class="eyebrow reveal">${p.role[lang]}</p>
-        <h1 class="hero-title reveal">${t.hi[lang]} <span>${p.name}</span></h1>
-        <p class="hero-text reveal">${p.tagline[lang]}</p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-light" href="#projects">${t.viewWork[lang]} <i class="fa-solid fa-arrow-down"></i></a>
-          <a class="btn btn-ghost" href="#social">${t.touch[lang]}</a>
-        </div>
-        <div class="stats reveal">
-          ${stats.map(s => `<div class="stat"><strong data-value="${s.value}">0</strong><span>${s.label[lang]}</span></div>`).join("")}
-        </div>
-      </div>
-      <div class="hero-media reveal">
-        <img src="${p.avatar}" alt="${p.name}" class="hero-pfp">
-      </div>`;
-  },
+      <div class="about-hero-grid">
+        <div class="about-main-col">
+          <p class="eyebrow reveal">${p.role[lang]}</p>
+          <h1 class="hero-title reveal">${t.hi[lang]} <span>${p.name}</span></h1>
+          <p class="hero-text reveal">${p.tagline[lang]}</p>
+          
+          <div class="about-text">
+            ${paragraphs.map((x) => `<p class="reveal">${x}</p>`).join("")}
+          </div>
 
-  about(paragraphs, groups, lang, p) {
-    return `
-      <div class="about-grid">
+          <div class="stack reveal">
+            ${groups.map((g) => `
+              <div>
+                <p class="stack-group">${g.group[lang]}</p>
+                <div class="chips">${g.items.map(x => `<span class="chip">${x}</span>`).join("")}</div>
+              </div>`).join("")}
+          </div>
+
+          <div class="hero-cta reveal">
+            <a class="btn btn-light" href="#projects">${t.viewWork[lang]} <i class="fa-solid fa-arrow-down"></i></a>
+            <a class="btn btn-ghost" href="#social">${t.touch[lang]}</a>
+          </div>
+
+          <div class="stats reveal">
+            ${stats.map(s => `<div class="stat"><strong data-value="${s.value}">0</strong><span>${s.label[lang]}</span></div>`).join("")}
+          </div>
+        </div>
+
         <div class="about-pfp-col reveal">
           <img src="${p.avatar}" alt="${p.name}" class="about-pfp">
-        </div>
-        <div class="about-info-col">
-          <div class="about-text">${paragraphs.map((x) => `<p class="reveal">${x}</p>`).join("")}</div>
-          <div class="stack">${groups.map((g) => `
-            <div class="reveal">
-              <p class="stack-group">${g.group[lang]}</p>
-              <div class="chips">${g.items.map(x => `<span class="chip">${x}</span>`).join("")}</div>
-            </div>`).join("")}
-          </div>
         </div>
       </div>`;
   },
