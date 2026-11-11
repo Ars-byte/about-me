@@ -64,10 +64,8 @@ No requiere herramientas de build ni empaquetadores (Webpack, Vite o Node.js). P
 python3 -m http.server 8080
 ```
 
-## Compatibilidad
+## Compatibilidad y rendimiento
 
-Probado y optimizado en:
-- Chromium / Google Chrome
-- Firefox
-- Helium Browser (Linux)
-- Navegadores móviles en Android e iOS
+- Sin dependencias pesadas ni frameworks inflados.
+- Cero layout shifts acumulados (CLS bajo).
+- Canvas de bajo consumo bloqueado a 24 FPS para ahorrar batería en móviles y portátiles.
