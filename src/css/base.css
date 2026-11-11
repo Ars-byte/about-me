@@ -17,11 +17,12 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  height: 100%;
+html {
+  min-height: 100%;
 }
 
 body {
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
@@ -53,7 +54,7 @@ main.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 76px;
+  padding-top: 84px;
   padding-bottom: 24px;
 }
 
@@ -100,6 +101,17 @@ main.container {
 }
 
 body[data-view="home"] .footer { display: none; }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  main.container {
+    padding-top: 108px;
+    padding-bottom: 24px;
+    justify-content: flex-start;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .view.active .reveal { animation: none; }
