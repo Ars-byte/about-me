@@ -44,3 +44,4 @@ about-me/
 - **`src/css/components/layout.css`**: Estilos del navbar superior fijo con efecto blur, enlaces de navegación, botones con esquinas rectas (`border-radius: 0`) y pie de página.
 - **`src/css/components/hero.css`**: Disposición y tipografía de los títulos principales, textos de presentación, bloques de estadísticas numéricas y avatar destacado.
 - **`src/css/components/sections.css`**: Cuadrícula de 2x2 para proyectos con bordes acentuados, chips de tecnologías, contenedor de redes sociales y reglas responsivas para móviles.
+- **`src/js/matrix.js`**: Efecto de lluvia digital en Canvas HTML5 usando caracteres `6` y `7` con opacidad tenue, trail suave y redimensionamiento dinámico.
