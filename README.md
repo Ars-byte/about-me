@@ -13,3 +13,25 @@ Portfolio personal minimalista y modular de Ars-byte.
 - Internacionalización completa con selector de idioma dinámico (Español / Inglés).
 - Adaptación responsiva optimizada tanto para escritorio como para dispositivos móviles (Android / iOS).
 - Código limpio y sin comentarios en archivos fuente.
+
+## Estructura del proyecto
+
+```text
+about-me/
+├── index.html
+├── README.md
+└── src/
+    ├── css/
+    │   ├── base.css
+    │   └── components/
+    │       ├── hero.css
+    │       ├── layout.css
+    │       └── sections.css
+    ├── data/
+    │   └── content.js
+    └── js/
+        ├── app.js
+        ├── components.js
+        ├── counter.js
+        └── matrix.js
+```
