@@ -45,3 +45,4 @@ about-me/
 - **`src/css/components/hero.css`**: Disposición y tipografía de los títulos principales, textos de presentación, bloques de estadísticas numéricas y avatar destacado.
 - **`src/css/components/sections.css`**: Cuadrícula de 2x2 para proyectos con bordes acentuados, chips de tecnologías, contenedor de redes sociales y reglas responsivas para móviles.
 - **`src/js/matrix.js`**: Efecto de lluvia digital en Canvas HTML5 usando caracteres `6` y `7` con opacidad tenue, trail suave y redimensionamiento dinámico.
+- **`src/js/counter.js`**: Módulo de incremento numérico animado con función de desaceleración exponencial (`ease-out`) e IntersectionObserver.
