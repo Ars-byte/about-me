@@ -55,3 +55,11 @@ about-me/
 2. **GenovaLauncher**: Lanzador de Minecraft: Bedrock Edition para Linux construido en Python y PySide6 (Qt6).
 3. **Imgview**: Visor de imágenes para TTY en C++ sin servidor gráfico.
 4. **Bigcrock**: Analizador de espacio en disco en árbol escrito en Go.
+
+## Ejecución local
+
+No requiere herramientas de build ni empaquetadores (Webpack, Vite o Node.js). Puedes abrirlo directamente o servirlo con Python:
+
+```bash
+python3 -m http.server 8080
+```
