@@ -41,3 +41,4 @@ about-me/
 - **`index.html`**: Punto de entrada semántico. Carga tipografías (Outfit, JetBrains Mono), iconos de FontAwesome y los estilos modulares sin código inline.
 - **`src/data/content.js`**: Única fuente de verdad de la información. Define el objeto global `window.SITE` con perfil, métricas numéricas, biografía, tecnologías, proyectos y diccionarios de traducción en español e inglés.
 - **`src/css/base.css`**: Variables CSS globales (`--bg`, `--surface`, `--accent`, `--line`), reset de márgenes, contenedores y animación de entrada `.reveal`.
+- **`src/css/components/layout.css`**: Estilos del navbar superior fijo con efecto blur, enlaces de navegación, botones con esquinas rectas (`border-radius: 0`) y pie de página.
