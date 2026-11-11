@@ -35,3 +35,7 @@ about-me/
         ├── counter.js
         └── matrix.js
 ```
+
+### Descripción de módulos
+
+- **`index.html`**: Punto de entrada semántico. Carga tipografías (Outfit, JetBrains Mono), iconos de FontAwesome y los estilos modulares sin código inline.
